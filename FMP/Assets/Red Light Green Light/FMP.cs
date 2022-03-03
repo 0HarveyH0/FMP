@@ -25,6 +25,14 @@ public class @FMP : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Change Scene"",
+                    ""type"": ""Button"",
+                    ""id"": ""e53e2c20-2b20-4abb-bf73-86dea56caae8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -82,6 +90,72 @@ public class @FMP : IInputActionCollection, IDisposable
                     ""action"": ""MoveForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""f1bc1564-9302-4daa-93e0-59d715d00227"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveForward"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""50ad5453-0b33-40c6-9cc0-8bc2e4db8b78"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""7ea03cf8-8846-4927-bd7d-20505d24cd94"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c083bfde-0469-43ff-b7ba-e1464dfa7234"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""352b9ca7-cbbf-491d-bd3e-9c8d368d79ad"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveForward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c4f9f05-8591-4931-b361-3063c5cdd351"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change Scene"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -152,6 +226,7 @@ public class @FMP : IInputActionCollection, IDisposable
         // RLGL
         m_RLGL = asset.FindActionMap("RLGL", throwIfNotFound: true);
         m_RLGL_MoveForward = m_RLGL.FindAction("MoveForward", throwIfNotFound: true);
+        m_RLGL_ChangeScene = m_RLGL.FindAction("Change Scene", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -202,11 +277,13 @@ public class @FMP : IInputActionCollection, IDisposable
     private readonly InputActionMap m_RLGL;
     private IRLGLActions m_RLGLActionsCallbackInterface;
     private readonly InputAction m_RLGL_MoveForward;
+    private readonly InputAction m_RLGL_ChangeScene;
     public struct RLGLActions
     {
         private @FMP m_Wrapper;
         public RLGLActions(@FMP wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveForward => m_Wrapper.m_RLGL_MoveForward;
+        public InputAction @ChangeScene => m_Wrapper.m_RLGL_ChangeScene;
         public InputActionMap Get() { return m_Wrapper.m_RLGL; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -219,6 +296,9 @@ public class @FMP : IInputActionCollection, IDisposable
                 @MoveForward.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnMoveForward;
                 @MoveForward.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnMoveForward;
                 @MoveForward.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnMoveForward;
+                @ChangeScene.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnChangeScene;
+                @ChangeScene.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnChangeScene;
+                @ChangeScene.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnChangeScene;
             }
             m_Wrapper.m_RLGLActionsCallbackInterface = instance;
             if (instance != null)
@@ -226,6 +306,9 @@ public class @FMP : IInputActionCollection, IDisposable
                 @MoveForward.started += instance.OnMoveForward;
                 @MoveForward.performed += instance.OnMoveForward;
                 @MoveForward.canceled += instance.OnMoveForward;
+                @ChangeScene.started += instance.OnChangeScene;
+                @ChangeScene.performed += instance.OnChangeScene;
+                @ChangeScene.canceled += instance.OnChangeScene;
             }
         }
     }
@@ -278,5 +361,6 @@ public class @FMP : IInputActionCollection, IDisposable
     public interface IRLGLActions
     {
         void OnMoveForward(InputAction.CallbackContext context);
+        void OnChangeScene(InputAction.CallbackContext context);
     }
 }

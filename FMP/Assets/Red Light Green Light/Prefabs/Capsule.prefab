@@ -211,11 +211,13 @@ GameObject:
   - component: {fileID: 8531532108016722973}
   - component: {fileID: 8531532108016722974}
   - component: {fileID: 8531532108016722975}
+  - component: {fileID: 2094188542307274432}
   - component: {fileID: 8531532108016722946}
   - component: {fileID: 6837012318192266452}
+  - component: {fileID: 4896810017336931918}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,6 +347,20 @@ MonoBehaviour:
   m_DefaultActionMap: RLGL
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 6742724220121535758}
+--- !u!114 &2094188542307274432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531532108016722969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3647a679372024f8451780697053aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 0
+  Points: {fileID: 0}
 --- !u!114 &8531532108016722946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,3 +391,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &4896810017336931918
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8531532108016722969}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

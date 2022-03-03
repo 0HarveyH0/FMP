@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
 
 public class Movement : MonoBehaviour
 {
@@ -19,12 +21,14 @@ public class Movement : MonoBehaviour
 		playerInputActions = new FMP();
 		playerInputActions.RLGL.MoveForward.Enable();
 		playerInputActions.RLGL.MoveForward.performed += MoveForward;
+		playerInputActions.RLGL.ChangeScene.Enable();
+		playerInputActions.RLGL.ChangeScene.performed += ChangeScene;
 	}
 
 
 	private void FixedUpdate()
 	{
-		//Vector2 inputVector = PlayerInputActions.RLGL
+
 	}
 
 	void Update()
@@ -41,6 +45,11 @@ public class Movement : MonoBehaviour
 		rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * moveSpeed, ForceMode.Force);
 	}
 
+	private void ChangeScene(InputAction.CallbackContext context)
+	{
+		Debug.Log(context);
+		SceneManager.LoadScene("MainMenu");
+	}
 
 	private void OnEnable()
 	{

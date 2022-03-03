@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PointManager : MonoBehaviour
 {
+    public TextMeshProUGUI pOnePoints;
 
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+
+
+
+
 
 
     void Update()
     {
-		if (Input.GetKey("space"))
-		{
-            SceneManager.LoadScene("Main Menu");
-		}
+
     }
 }

@@ -33,6 +33,14 @@ public class @FMP : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc810333-22b6-450a-8dd5-aba553e193f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -156,6 +164,28 @@ public class @FMP : IInputActionCollection, IDisposable
                     ""action"": ""Change Scene"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""444e8e9f-5589-48b8-a839-8afff5a69e7a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fdb53073-145f-4fe8-8c28-3d3dd1313ba3"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +257,7 @@ public class @FMP : IInputActionCollection, IDisposable
         m_RLGL = asset.FindActionMap("RLGL", throwIfNotFound: true);
         m_RLGL_MoveForward = m_RLGL.FindAction("MoveForward", throwIfNotFound: true);
         m_RLGL_ChangeScene = m_RLGL.FindAction("Change Scene", throwIfNotFound: true);
+        m_RLGL_Select = m_RLGL.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -278,12 +309,14 @@ public class @FMP : IInputActionCollection, IDisposable
     private IRLGLActions m_RLGLActionsCallbackInterface;
     private readonly InputAction m_RLGL_MoveForward;
     private readonly InputAction m_RLGL_ChangeScene;
+    private readonly InputAction m_RLGL_Select;
     public struct RLGLActions
     {
         private @FMP m_Wrapper;
         public RLGLActions(@FMP wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveForward => m_Wrapper.m_RLGL_MoveForward;
         public InputAction @ChangeScene => m_Wrapper.m_RLGL_ChangeScene;
+        public InputAction @Select => m_Wrapper.m_RLGL_Select;
         public InputActionMap Get() { return m_Wrapper.m_RLGL; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -299,6 +332,9 @@ public class @FMP : IInputActionCollection, IDisposable
                 @ChangeScene.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnChangeScene;
                 @ChangeScene.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnChangeScene;
                 @ChangeScene.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnChangeScene;
+                @Select.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnSelect;
             }
             m_Wrapper.m_RLGLActionsCallbackInterface = instance;
             if (instance != null)
@@ -309,6 +345,9 @@ public class @FMP : IInputActionCollection, IDisposable
                 @ChangeScene.started += instance.OnChangeScene;
                 @ChangeScene.performed += instance.OnChangeScene;
                 @ChangeScene.canceled += instance.OnChangeScene;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
             }
         }
     }
@@ -362,5 +401,6 @@ public class @FMP : IInputActionCollection, IDisposable
     {
         void OnMoveForward(InputAction.CallbackContext context);
         void OnChangeScene(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }

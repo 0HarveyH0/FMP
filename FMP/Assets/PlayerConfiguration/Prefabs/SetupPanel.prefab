@@ -1910,6 +1910,7 @@ GameObject:
   - component: {fileID: 5510683418942067988}
   - component: {fileID: 684814980186184653}
   - component: {fileID: 2645538607125459567}
+  - component: {fileID: 827796034162803649}
   m_Layer: 5
   m_Name: SetupPanel
   m_TagString: Untagged
@@ -1994,3 +1995,24 @@ MonoBehaviour:
   readyPanel: {fileID: 1128393543416117088}
   menuPanel: {fileID: 1128393545410372590}
   readyButton: {fileID: 1034912851989119667}
+--- !u!223 &827796034162803649
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9032687459452164718}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0

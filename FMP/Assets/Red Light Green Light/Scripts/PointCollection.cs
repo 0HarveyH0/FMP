@@ -5,9 +5,9 @@ using TMPro;
 
 public class PointCollection : MonoBehaviour
 {
-
+    private List<PlayerConfiguration> playerConfigs;
     public float points;
-    public TextMeshProUGUI Points;
+    public int index;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class PointCollection : MonoBehaviour
         if (other.CompareTag("collectable"))
         {
             points++;
-            Points.text = points.ToString();
+            Debug.Log($"Player has {points}");
         }
         else if (other.CompareTag("deductable"))
         {

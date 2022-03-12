@@ -13,6 +13,14 @@ public class Movement : MonoBehaviour
 	private PlayerInput playerInput;
 	private FMP playerInputActions;
 
+	[SerializeField]
+	private int playerIndex = 0; 
+
+	public bool IsMoving()
+    {
+		return rb.velocity.magnitude > 0.1f;
+    }
+
 	void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -37,6 +45,10 @@ public class Movement : MonoBehaviour
 		rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * moveSpeed, ForceMode.Force);
 	}
 
+	public int GetPlayerIndex()
+	{
+		return playerIndex;
+	}
 
 	public void MoveForward(InputAction.CallbackContext context)
 	{

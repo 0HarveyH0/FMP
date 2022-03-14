@@ -163,6 +163,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8531532108016722946, guid: 1ef5292f5353cb1479860a000c7694fe, type: 3}
+      propertyPath: moveSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8531532108016722947, guid: 1ef5292f5353cb1479860a000c7694fe, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -750,7 +754,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1370262423
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -859,7 +863,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 812eb233bfdd11949ae84e36e203670e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8d8b34d346bc13846b27f8e03e915f39, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

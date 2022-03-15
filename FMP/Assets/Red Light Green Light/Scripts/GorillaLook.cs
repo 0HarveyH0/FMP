@@ -28,10 +28,11 @@ public class GorillaLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StateMachine();
+        if(player != null)
+		{
+           StateMachine();
+        }          
     }
-
-
     private void StateMachine()
 	{
         switch (currentState)
@@ -65,7 +66,7 @@ public class GorillaLook : MonoBehaviour
 
 			if (player.IsMoving())
 			{
-                Destroy(player.gameObject);
+                player.Die();
 			}
 		}
 		else

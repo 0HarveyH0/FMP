@@ -63,6 +63,16 @@ public class Movement : MonoBehaviour
 		SceneManager.LoadScene("MainMenu");
 	}
 
+	public virtual void Die()
+	{
+		//death animation
+	}
+	public virtual void Win()
+	{
+		//stop moving
+		//cant die
+	}
+
 	private void OnEnable()
 	{
 

@@ -14,20 +14,24 @@ public class GorillaLook : MonoBehaviour
 
     private Animator animator;
     
-    private Movement player;
+    private Mover player;
+
+	private void Awake()
+	{
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Movement>();
+        player = FindObjectOfType<Mover>();
+        jingleSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
-
         currentInspectionTime = startInspectionTime;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {       
         if(player != null)
 		{
            StateMachine();
@@ -38,9 +42,11 @@ public class GorillaLook : MonoBehaviour
         switch (currentState)
 		{
             case RobotStates.Counting:
+                Debug.Log("Counting");
                 Count();
                 break;
             case RobotStates.Inspecting:
+                Debug.Log("Inspecting");
                 Inspect();
                 break;
             default:
@@ -51,7 +57,8 @@ public class GorillaLook : MonoBehaviour
 
     private void Count()
 	{
-		if (!jingleSource.isPlaying)
+        Debug.Log("Counting");
+        if (!jingleSource.isPlaying)
 		{
             animator.SetTrigger("Look");
             currentState = RobotStates.Inspecting;

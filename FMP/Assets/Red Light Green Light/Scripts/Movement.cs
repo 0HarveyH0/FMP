@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
 	private Rigidbody rb;
 	public float force;
 	public float moveSpeed;
+	public bool canMove = true;
 	private PlayerInput playerInput;
 	private FMP playerInputActions;
 
@@ -32,17 +33,17 @@ public class Movement : MonoBehaviour
 		playerInputActions.RLGL.ChangeScene.Enable();
 		playerInputActions.RLGL.ChangeScene.performed += ChangeScene;
 	}
-
-
-	private void FixedUpdate()
-	{
-
-	}
-
 	void Update()
 	{
-		Vector2 inputVector = playerInputActions.RLGL.MoveForward.ReadValue<Vector2>();
-		rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * moveSpeed, ForceMode.Force);
+		if(canMove == true)
+		{ 
+			Vector2 inputVector = playerInputActions.RLGL.MoveForward.ReadValue<Vector2>();
+			rb.AddForce(new Vector3(inputVector.x, 0, inputVector.y) * moveSpeed, ForceMode.Force);
+		}
+		else
+		{
+			rb.velocity = Vector3.zero;
+		}
 	}
 
 	public int GetPlayerIndex()
@@ -66,6 +67,7 @@ public class Movement : MonoBehaviour
 	public virtual void Die()
 	{
 		//death animation
+		canMove = false;
 	}
 	public virtual void Win()
 	{

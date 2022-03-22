@@ -6,7 +6,7 @@ public class FinishLine : MonoBehaviour
 {
 	private void OnTriggerEnter(Collider other)
 	{
-		Movement character = other.GetComponent<Movement>();
+		Mover character = other.GetComponent<Mover>();
 
 		if(character != null)
 		{

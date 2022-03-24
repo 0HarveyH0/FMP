@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
 	public float force;
 	public float moveSpeed;
 	public bool canMove = true;
+	Animator anim;
 	private PlayerInput playerInput;
 	private FMP playerInputActions;
 
@@ -19,6 +20,7 @@ public class Movement : MonoBehaviour
 
 	public bool IsMoving()
     {
+		anim.SetBool("Moving", true);
 		return rb.velocity.magnitude > 0.1f;
     }
 
@@ -26,6 +28,7 @@ public class Movement : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		playerInput = GetComponent<PlayerInput>();
+		anim = gameObject.GetComponent<Animator>();
 
 		playerInputActions = new FMP();
 		playerInputActions.RLGL.MoveForward.Enable();

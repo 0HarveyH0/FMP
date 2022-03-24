@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
+	private Mover player;
+
 	private void OnTriggerEnter(Collider other)
 	{
-		Mover character = other.GetComponent<Mover>();
-
-		if(character != null)
+		player = FindObjectOfType<Mover>();
+		if (player != null)
 		{
-			character.Win();
+			player.Win();
 			Debug.Log(other.name + " has won!");
 		}
 	}

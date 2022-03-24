@@ -8,11 +8,10 @@ public class Mover : MonoBehaviour
     private float MoveSpeed = 3f;
 
     public float gravity = -9.81f;
-
+    private Animator anim;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-
     Vector3 velocity;
     bool isGrounded;
 
@@ -32,6 +31,7 @@ public class Mover : MonoBehaviour
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
     }
 
@@ -65,6 +65,7 @@ public class Mover : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
 
             controller.Move(velocity * Time.deltaTime);
+            anim.SetFloat("Speed", moveDirection.z);
         }
 		else
 		{
@@ -75,10 +76,13 @@ public class Mover : MonoBehaviour
     {
         //death animation
         canMove = false;
+        anim.SetTrigger("Die");
     }
     public virtual void Win()
     {
         //stop moving
+        canMove = false;
         //cant die
+        anim.SetTrigger("Win");
     }
 }

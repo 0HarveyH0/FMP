@@ -78,7 +78,7 @@ MonoBehaviour:
   playerSpawns:
   - {fileID: 1167811848868587107}
   - {fileID: 1167811847163382472}
-  playerPrefab: {fileID: 4219573600777937143, guid: c62464fd0b8d77d4fabd3ba3ca682a21, type: 3}
+  playerPrefab: {fileID: 3485352690183125133, guid: 8fdb785731d7981498a4c0aa6a2a5f48, type: 3}
 --- !u!1 &1167811848868587104
 GameObject:
   m_ObjectHideFlags: 0

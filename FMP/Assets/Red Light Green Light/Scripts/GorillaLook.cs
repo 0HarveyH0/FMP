@@ -42,11 +42,9 @@ public class GorillaLook : MonoBehaviour
         switch (currentState)
 		{
             case RobotStates.Counting:
-                Debug.Log("Counting");
                 Count();
                 break;
             case RobotStates.Inspecting:
-                Debug.Log("Inspecting");
                 Inspect();
                 break;
             default:
@@ -57,7 +55,6 @@ public class GorillaLook : MonoBehaviour
 
     private void Count()
 	{
-        Debug.Log("Counting");
         if (!jingleSource.isPlaying)
 		{
             animator.SetTrigger("Look");

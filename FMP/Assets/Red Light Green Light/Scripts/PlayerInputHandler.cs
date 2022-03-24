@@ -11,7 +11,7 @@ public class PlayerInputHandler : MonoBehaviour
     private Mover mover;
 
     [SerializeField]
-    private MeshRenderer playerMesh;
+    private SkinnedMeshRenderer playerMesh;
 
     private FMP controls;
     private void Awake()

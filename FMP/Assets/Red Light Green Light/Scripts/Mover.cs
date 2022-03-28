@@ -6,7 +6,7 @@ public class Mover : MonoBehaviour
 {
     [SerializeField]
     private float MoveSpeed = 3f;
-
+    public int position = 0;
     public float gravity = -9.81f;
     private Animator anim;
     public Transform groundCheck;
@@ -84,5 +84,29 @@ public class Mover : MonoBehaviour
         canMove = false;
         //cant die
         anim.SetTrigger("Win");
+        Position(playerIndex);
     }
+    public void Position(float playerIndex)
+    {
+        switch (position)
+        {
+            case 0:
+                Debug.Log($"{playerIndex + 1} is first");
+                position++;
+                break;
+            case 1:
+                Debug.Log($"{playerIndex + 1} is second");
+                position++;
+                break;
+            case 2:
+                Debug.Log($"{playerIndex + 1} is third");
+                position++;
+                break;
+            case 3:
+                Debug.Log($"{playerIndex + 1} is fourth");
+                position++;
+                break;
+        }
+    }
+
 }

@@ -8,16 +8,38 @@ using TMPro;
 
 public class PointManager : MonoBehaviour
 {
-    public TextMeshProUGUI pOnePoints;
 
+	[SerializeField]
+	public float playerIndex;
 
+	public int position = 0;
 
+	public float winnerIndex;
 
+	public Mover player;
 
+	void Start()
+	{
+		player = FindObjectOfType<Mover>();
+	}
 
+	private void Update()
+	{
+			
+	}
 
-    void Update()
-    {
-
-    }
+	public void Position(float playerIndex)
+	{
+		switch (position)
+		{
+			case 0:
+				Debug.Log($"{playerIndex} is first");
+				position++;
+				break;
+			case 1:
+				Debug.Log($"{playerIndex} is second");
+				position++;
+				break;
+		}
+	}
 }

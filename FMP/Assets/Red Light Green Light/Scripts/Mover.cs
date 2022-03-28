@@ -86,6 +86,17 @@ public class Mover : MonoBehaviour
         anim.SetTrigger("Win");
         Position(playerIndex);
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {     
+        if (other.CompareTag("Finish"))
+        {
+            Win();
+        }
+
+    }
+
     public void Position(float playerIndex)
     {
         switch (position)

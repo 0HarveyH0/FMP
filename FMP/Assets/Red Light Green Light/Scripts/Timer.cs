@@ -9,10 +9,12 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float initialTime = 60f;
     private float currentTime;
+    private Mover player;
     // Start is called before the first frame update
     void Start()
     {
         currentTime = initialTime;
+        player = FindObjectOfType<Mover>();
     }
 
     // Update is called once per frame
@@ -25,9 +27,11 @@ public class Timer : MonoBehaviour
             timerText.text = span.ToString(@"mm\:ss");
             return;
 		}
+		else
+		{
+            player.Die();
+		}
 
-
-        Debug.Log("Kill all players");
 		
     }
 }

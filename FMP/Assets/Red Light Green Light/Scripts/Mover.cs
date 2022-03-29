@@ -12,6 +12,8 @@ public class Mover : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public GameObject positionManager;
+    public playerPosition playerPos;
     Vector3 velocity;
     bool isGrounded;
 
@@ -33,6 +35,7 @@ public class Mover : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+        playerPos = positionManager.GetComponent<playerPosition>();
     }
 
     public int GetPlayerIndex()
@@ -85,6 +88,7 @@ public class Mover : MonoBehaviour
         //cant die
         anim.SetTrigger("Win");
         Position(playerIndex);
+        playerPos.playerPositionList.Add(playerIndex);
     }
 
 
@@ -102,7 +106,7 @@ public class Mover : MonoBehaviour
         switch (position)
         {
             case 0:
-                Debug.Log($"{playerIndex + 1} is first");
+                Debug.Log($"{playerPos.playerPositionList[0]} is first");
                 position++;
                 break;
             case 1:

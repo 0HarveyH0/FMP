@@ -446,6 +446,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  positionManager: {fileID: 1891520702255734091, guid: 2e11912d7fb9ccd40926d4bc8f06d129, type: 3}
+  playerPos: {fileID: 7939712507178022078, guid: 2e11912d7fb9ccd40926d4bc8f06d129, type: 3}
   playerIndex: 0
   canMove: 1
 --- !u!143 &1517384213076463

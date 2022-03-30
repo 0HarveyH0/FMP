@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Mover : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Mover : MonoBehaviour
     public LayerMask groundMask;
     public GameObject positionManager;
     public playerPosition playerPos;
+    private PlayerInput pi;
     Vector3 velocity;
     bool isGrounded;
 
@@ -87,8 +89,16 @@ public class Mover : MonoBehaviour
         canMove = false;
         //cant die
         anim.SetTrigger("Win");
-        Position(playerIndex);
-        playerPos.playerPositionList.Add(playerIndex);
+        //debug player index
+        //Debug.Log(PlayerConfiguration.);
+
+        //Position(playerIndex);
+        //playerPos.playerPositionList.Add(playerIndex);
+        //switch (playerIndex)
+        //{
+            //case 0:
+
+        //}
     }
 
 
@@ -101,6 +111,7 @@ public class Mover : MonoBehaviour
 
     }
 
+    /*
     public void Position(float playerIndex)
     {
         switch (position)
@@ -123,5 +134,5 @@ public class Mover : MonoBehaviour
                 break;
         }
     }
-
+    */
 }

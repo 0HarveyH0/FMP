@@ -1,16 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class playerPosition : MonoBehaviour
 {
     [SerializeField]
     public List<float> playerPositionList;
+    private PlayerInput input;
 
     public int maxPlayer;
 
-    // Start is called before the first frame update
-    void Start()
+	void Awake()
+	{
+        
+    }
+
+	// Start is called before the first frame update
+	void Start()
     {
         
     }

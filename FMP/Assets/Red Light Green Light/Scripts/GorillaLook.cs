@@ -6,7 +6,7 @@ enum RobotStates { Counting, Inspecting}
 
 public class GorillaLook : MonoBehaviour
 {
-    [SerializeField] private float startInspectionTime = 2f;
+    [SerializeField] public float startInspectionTime;
     [SerializeField] private AudioSource jingleSource;
 
     private float currentInspectionTime;
@@ -32,10 +32,7 @@ public class GorillaLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {       
-        if(player != null)
-		{
-           StateMachine();
-        }          
+        StateMachine();               
     }
     private void StateMachine()
 	{

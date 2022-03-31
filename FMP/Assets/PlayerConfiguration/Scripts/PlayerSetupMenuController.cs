@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerSetupMenuController : MonoBehaviour
 {
 
-    private int PlayerIndex;
+    public int playerIndex;
 
     [SerializeField]
     private TextMeshProUGUI titleText;
@@ -24,7 +24,8 @@ public class PlayerSetupMenuController : MonoBehaviour
 
     public void SetPlayerIndex(int pi)
 	{
-        PlayerIndex = pi;
+        playerIndex = pi;
+        PlayerPrefs.SetInt("playerIndex", playerIndex);
         titleText.SetText("Player " + (pi + 1).ToString());
         IgnoreInputTime = Time.time + IgnoreInputTime;
 	}
@@ -43,7 +44,7 @@ public class PlayerSetupMenuController : MonoBehaviour
 	{
         if(!inputEnabled) { return; }
 
-        PlayerConfigurationManager.Instance.SetPlayerColour(PlayerIndex, colour);
+        PlayerConfigurationManager.Instance.SetPlayerColour(playerIndex, colour);
         readyPanel.SetActive(true);
         readyButton.Select();
         menuPanel.SetActive(false);
@@ -53,7 +54,7 @@ public class PlayerSetupMenuController : MonoBehaviour
 	{
         if (!inputEnabled) { return; }
 
-        PlayerConfigurationManager.Instance.ReadyPlayer(PlayerIndex);
+        PlayerConfigurationManager.Instance.ReadyPlayer(playerIndex);
         readyButton.gameObject.SetActive(false);
     }
 

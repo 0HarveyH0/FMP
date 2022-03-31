@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 public class Mover : MonoBehaviour
 {
@@ -14,20 +15,19 @@ public class Mover : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public GameObject positionManager;
+   
+    public static ReadOnlyArray<PlayerInput> all { get; }
     public playerPosition playerPos;
-    private PlayerInput pi;
+    private PlayerInput input;
     Vector3 velocity;
     bool isGrounded;
-
-    [SerializeField]
-    private int playerIndex = 0;
 
     private CharacterController controller;
 
     public bool canMove = true;
     public bool IsMoving()
     {
-        return controller.velocity.magnitude > 0.1f;
+        return anim.GetFloat("Speed") > 0.1f;
     }
 
     private Vector3 moveDirection = Vector3.zero;
@@ -38,12 +38,10 @@ public class Mover : MonoBehaviour
         anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         playerPos = positionManager.GetComponent<playerPosition>();
+
     }
 
-    public int GetPlayerIndex()
-    {
-        return playerIndex;
-    }
+
 
     public void SetInputVector(Vector2 direction)
     {
@@ -89,24 +87,19 @@ public class Mover : MonoBehaviour
         canMove = false;
         //cant die
         anim.SetTrigger("Win");
-        //debug player index
-        //Debug.Log(PlayerConfiguration.);
 
-        //Position(playerIndex);
-        //playerPos.playerPositionList.Add(playerIndex);
-        //switch (playerIndex)
-        //{
-            //case 0:
+        int index = PlayerPrefs.GetInt("playerIndex");
 
-        //}
+        Debug.Log(index);
+        PlayerPrefs.SetInt("playerIndex", index + 1);
     }
 
 
     private void OnTriggerEnter(Collider other)
-    {     
+    {      
         if (other.CompareTag("Finish"))
         {
-            Win();
+            Win();        
         }
 
     }

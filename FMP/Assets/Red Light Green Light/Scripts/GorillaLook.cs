@@ -18,6 +18,7 @@ public class GorillaLook : MonoBehaviour
 
 	private void Awake()
 	{
+
     }
 
     // Start is called before the first frame update

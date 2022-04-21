@@ -43,7 +43,7 @@ public class PlayerConfigurationManager : MonoBehaviour
 		playerConfigs[index].IsReady = true;
 		if(playerConfigs.Count == MaxPlayers && playerConfigs.All(p => p.IsReady == true))
 		{
-			SceneManager.LoadScene("RedLightGreenLight");
+			SceneManager.LoadScene("mazeminigame");
 		}
 	}
 

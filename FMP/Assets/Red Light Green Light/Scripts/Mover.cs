@@ -15,7 +15,8 @@ public class Mover : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public GameObject positionManager;
-   
+    public uint Id { get; }
+
     public static ReadOnlyArray<PlayerInput> all { get; }
     public playerPosition playerPos;
     private PlayerInput input;
@@ -69,6 +70,7 @@ public class Mover : MonoBehaviour
 
             controller.Move(velocity * Time.deltaTime);
             anim.SetFloat("Speed", moveDirection.z);
+            Debug.Log(Id);
         }
 		else
 		{

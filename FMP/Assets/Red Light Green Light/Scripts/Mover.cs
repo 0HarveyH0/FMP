@@ -15,13 +15,13 @@ public class Mover : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public GameObject positionManager;
+    public Transform respawn;
     public uint Id { get; }
 
     public static ReadOnlyArray<PlayerInput> all { get; }
     public playerPosition playerPos;
     private PlayerInput input;
     Vector3 velocity;
-    bool isGrounded;
 
     private CharacterController controller;
 
@@ -49,13 +49,19 @@ public class Mover : MonoBehaviour
         inputVector = direction;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (canMove == true)
         {
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            
+			if (isGrounded())
+			{
+                anim.SetBool("IsGrounded", true);
+			}
 
-            if(isGrounded && velocity.y < 0)
+            
+
+            if(isGrounded() && velocity.y < 0)
 			{
                 velocity.y = -2f;
 			}
@@ -67,10 +73,21 @@ public class Mover : MonoBehaviour
             controller.Move(moveDirection * Time.deltaTime);
 
             velocity.y += gravity * Time.deltaTime;
+            anim.SetFloat("moveX", inputVector.x);
+            anim.SetFloat("moveY", inputVector.y);
+            if(inputVector.x == 0 && inputVector.y == 0)
+			{
+                anim.SetBool("isMoving", false);
+			}
+			else
+			{
+                anim.SetBool("isMoving", true);
+			}
 
             controller.Move(velocity * Time.deltaTime);
-            anim.SetFloat("Speed", moveDirection.z);
-            Debug.Log(Id);
+            anim.SetFloat("Speed", moveDirection.x + moveDirection.z);
+
+            //Debug.Log(Id);
         }
 		else
 		{
@@ -103,7 +120,22 @@ public class Mover : MonoBehaviour
         {
             Win();        
         }
+        else if(other.CompareTag("Fall"))
+        {
+            Debug.Log("Fall");
+            controller.enabled = false;
+            transform.position = new Vector3(0f,3f,-38f);
+            controller.enabled = true;
+            anim.SetBool("IsGrounded", false);
+		}
 
+
+
+    }
+
+    public bool isGrounded()
+    {
+        return Physics.CheckSphere(groundCheck.position, .1f, groundMask);
     }
 
     /*

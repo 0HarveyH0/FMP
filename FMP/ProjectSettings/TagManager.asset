@@ -6,6 +6,7 @@ TagManager:
   tags:
   - collectable
   - deductable
+  - Fall
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
@@ -17,7 +18,7 @@ public class Mover : MonoBehaviour
     public GameObject positionManager;
     public Transform respawn;
     public uint Id { get; }
-
+    public TextMeshProUGUI coinCounter;
     public static ReadOnlyArray<PlayerInput> all { get; }
     public playerPosition playerPos;
     private PlayerInput input;

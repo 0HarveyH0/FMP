@@ -13,12 +13,13 @@ public class Mover : MonoBehaviour
     public float gravity = -9.81f;
     private Animator anim;
     public Transform groundCheck;
+    public int points;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public GameObject positionManager;
     public Transform respawn;
     public uint Id { get; }
-    public TextMeshProUGUI coinCounter;
+    public TextMeshPro coinCounter;
     public static ReadOnlyArray<PlayerInput> all { get; }
     public playerPosition playerPos;
     private PlayerInput input;
@@ -128,6 +129,11 @@ public class Mover : MonoBehaviour
             transform.position = new Vector3(0f,3f,-38f);
             controller.enabled = true;
             anim.SetBool("IsGrounded", false);
+		}
+		if (other.CompareTag("Collectable"))
+		{
+            points++;
+            coinCounter.SetText(points.ToString());
 		}
 
 

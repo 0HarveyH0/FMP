@@ -19,10 +19,11 @@ public class Mover : MonoBehaviour
     public GameObject positionManager;
     public Transform respawn;
     public uint Id { get; }
-    public TextMeshPro coinCounter;
+    public TextMeshProUGUI coinCounter;
     public static ReadOnlyArray<PlayerInput> all { get; }
     public playerPosition playerPos;
-    private PlayerInput input;
+	private FMP playerInputActions;
+	private PlayerInput input;
     Vector3 velocity;
 
     private CharacterController controller;
@@ -42,6 +43,10 @@ public class Mover : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerPos = positionManager.GetComponent<playerPosition>();
 
+        playerInputActions = new FMP();
+        playerInputActions.RLGL.MoveForward.Enable();
+        playerInputActions.RLGL.MoveForward.performed += MoveForward;
+
     }
 
 
@@ -53,6 +58,9 @@ public class Mover : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector2 inputVector = playerInputActions.RLGL.MoveForward.ReadValue<Vector2>();
+
+        
         if (canMove == true)
         {
             
@@ -95,7 +103,15 @@ public class Mover : MonoBehaviour
 		{
             controller.velocity.Set(0, 0, 0);
 		}
+        
     }
+
+    public void MoveForward(InputAction.CallbackContext context)
+	{
+        Vector2 inputVector = playerInputActions.RLGL.MoveForward.ReadValue<Vector2>();
+    }
+
+
     public virtual void Die()
     {
         //death animation
@@ -130,7 +146,7 @@ public class Mover : MonoBehaviour
             controller.enabled = true;
             anim.SetBool("IsGrounded", false);
 		}
-		if (other.CompareTag("Collectable"))
+		if (other.CompareTag("collectable"))
 		{
             points++;
             coinCounter.SetText(points.ToString());

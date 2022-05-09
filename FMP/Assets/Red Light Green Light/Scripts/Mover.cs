@@ -146,11 +146,21 @@ public class Mover : MonoBehaviour
             controller.enabled = true;
             anim.SetBool("IsGrounded", false);
 		}
-		if (other.CompareTag("collectable"))
+		else if (other.CompareTag("collectable"))
 		{
             points++;
             coinCounter.SetText(points.ToString());
 		}
+        else if (other.CompareTag("deductable"))
+        {
+            points--;
+            coinCounter.SetText(points.ToString());
+        }
+        else if (other.CompareTag("BonusCoin"))
+        {
+            points = points + 3;
+            coinCounter.SetText(points.ToString());
+        }
 
 
 

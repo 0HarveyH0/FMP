@@ -41,6 +41,14 @@ public class @FMP : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""c68c6c7d-2e9c-4d0d-9c5d-290ec6a6e9c5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -186,6 +194,28 @@ public class @FMP : IInputActionCollection, IDisposable
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""390fdcde-de01-41b7-9173-108be626574f"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7189a35c-7fa6-42f7-a17f-039e0bc7feaf"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -258,6 +288,7 @@ public class @FMP : IInputActionCollection, IDisposable
         m_RLGL_MoveForward = m_RLGL.FindAction("MoveForward", throwIfNotFound: true);
         m_RLGL_ChangeScene = m_RLGL.FindAction("Change Scene", throwIfNotFound: true);
         m_RLGL_Select = m_RLGL.FindAction("Select", throwIfNotFound: true);
+        m_RLGL_Look = m_RLGL.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -310,6 +341,7 @@ public class @FMP : IInputActionCollection, IDisposable
     private readonly InputAction m_RLGL_MoveForward;
     private readonly InputAction m_RLGL_ChangeScene;
     private readonly InputAction m_RLGL_Select;
+    private readonly InputAction m_RLGL_Look;
     public struct RLGLActions
     {
         private @FMP m_Wrapper;
@@ -317,6 +349,7 @@ public class @FMP : IInputActionCollection, IDisposable
         public InputAction @MoveForward => m_Wrapper.m_RLGL_MoveForward;
         public InputAction @ChangeScene => m_Wrapper.m_RLGL_ChangeScene;
         public InputAction @Select => m_Wrapper.m_RLGL_Select;
+        public InputAction @Look => m_Wrapper.m_RLGL_Look;
         public InputActionMap Get() { return m_Wrapper.m_RLGL; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -335,6 +368,9 @@ public class @FMP : IInputActionCollection, IDisposable
                 @Select.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnSelect;
                 @Select.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnSelect;
                 @Select.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnSelect;
+                @Look.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnLook;
             }
             m_Wrapper.m_RLGLActionsCallbackInterface = instance;
             if (instance != null)
@@ -348,6 +384,9 @@ public class @FMP : IInputActionCollection, IDisposable
                 @Select.started += instance.OnSelect;
                 @Select.performed += instance.OnSelect;
                 @Select.canceled += instance.OnSelect;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
             }
         }
     }
@@ -402,5 +441,6 @@ public class @FMP : IInputActionCollection, IDisposable
         void OnMoveForward(InputAction.CallbackContext context);
         void OnChangeScene(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }

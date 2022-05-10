@@ -237,7 +237,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 17.472, y: 41.953, z: 0}
 --- !u!1001 &365245207
 PrefabInstance:
@@ -676,87 +676,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &1581994570853683993
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1581994570804528440, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_SplitScreen
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528440, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_PlayerPrefab
-      value: 
-      objectReference: {fileID: 3344690130272241540, guid: d88bd102f44a85443bb2dbfff26d5f0b, type: 3}
-    - target: {fileID: 1581994570804528440, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_MaxPlayerCount
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528440, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_FixedNumberOfSplitScreens
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528441, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_Name
-      value: PlayerConfigurationManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528442, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528443, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: testScene
-      value: MultiplayerTestScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581994570804528443, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
-      propertyPath: MaxPlayers
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4527a6ba5783f0743aef1462da556f96, type: 3}
 --- !u!4 &1852576806076738908
 Transform:
   m_ObjectHideFlags: 0

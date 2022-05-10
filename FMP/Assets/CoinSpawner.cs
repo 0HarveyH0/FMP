@@ -14,7 +14,7 @@ public class CoinSpawner : MonoBehaviour
     void Start()
     {
         itemIndex = Random.Range(0, coins.Length);
-        SpawnCollectables();
+        SpawnAllCollectables();
     }
 
     // Update is called once per frame
@@ -53,9 +53,9 @@ public class CoinSpawner : MonoBehaviour
     public Transform GetCollectableSpawnPoint()
     {
         //Selects one of the coins
-        itemIndex = itemIndex % coins.Length;
+        itemIndex = itemIndex / coins.Length;
         //returns the selected point
-        return spawnLocation[itemIndex++];
+        return spawnLocation[itemIndex];
     }
 
 }

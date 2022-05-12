@@ -49,6 +49,54 @@ public class @FMP : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Left Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""ca288301-96e1-4b11-b6c6-6587f87d269d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MMB"",
+                    ""type"": ""Button"",
+                    ""id"": ""de9b78b8-c1a6-4238-a196-bd5f86badca0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Right Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""3b4eaf9e-a8f5-465e-8dcc-d6dea6cdcc48"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Scroll Wheel"",
+                    ""type"": ""Value"",
+                    ""id"": ""5010ffea-4425-4eea-9950-e63fca334a3b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""622de534-3474-44c1-b4b4-e8b4fad18635"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""06f2d81e-77b2-4512-b907-34c699b35132"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -212,8 +260,140 @@ public class @FMP : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87958fc9-5c82-4510-bc7a-7a588b4a1ba0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Left Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""34fb56f2-2106-48df-873c-5b8321fe060f"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Left Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee149a97-d59f-4dbc-a5f5-efd120437734"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""MMB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8d77406-de20-45c0-97a6-02736712ea53"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""MMB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff103679-95fa-4a1a-b11e-14a6d0db9d41"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Right Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28b1c6b2-15f2-42f7-ab20-f898f981bb1f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Right Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28194e7e-628a-4196-b7bc-afc1e57e665a"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Scroll Wheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d2955f07-1eb6-4b32-9c8e-ca5a3d8d81f9"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Scroll Wheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9173e201-ad05-4293-957a-bf6ed6534ba5"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da4fc493-5561-4036-9da0-b8025ad5e7d3"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf304566-eb0d-475e-9b33-fcd2f53d6188"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ceca21d-7001-46aa-9a0c-69a1f9022337"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -289,6 +469,12 @@ public class @FMP : IInputActionCollection, IDisposable
         m_RLGL_ChangeScene = m_RLGL.FindAction("Change Scene", throwIfNotFound: true);
         m_RLGL_Select = m_RLGL.FindAction("Select", throwIfNotFound: true);
         m_RLGL_Look = m_RLGL.FindAction("Look", throwIfNotFound: true);
+        m_RLGL_LeftClick = m_RLGL.FindAction("Left Click", throwIfNotFound: true);
+        m_RLGL_MMB = m_RLGL.FindAction("MMB", throwIfNotFound: true);
+        m_RLGL_RightClick = m_RLGL.FindAction("Right Click", throwIfNotFound: true);
+        m_RLGL_ScrollWheel = m_RLGL.FindAction("Scroll Wheel", throwIfNotFound: true);
+        m_RLGL_Enter = m_RLGL.FindAction("Enter", throwIfNotFound: true);
+        m_RLGL_Cancel = m_RLGL.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -342,6 +528,12 @@ public class @FMP : IInputActionCollection, IDisposable
     private readonly InputAction m_RLGL_ChangeScene;
     private readonly InputAction m_RLGL_Select;
     private readonly InputAction m_RLGL_Look;
+    private readonly InputAction m_RLGL_LeftClick;
+    private readonly InputAction m_RLGL_MMB;
+    private readonly InputAction m_RLGL_RightClick;
+    private readonly InputAction m_RLGL_ScrollWheel;
+    private readonly InputAction m_RLGL_Enter;
+    private readonly InputAction m_RLGL_Cancel;
     public struct RLGLActions
     {
         private @FMP m_Wrapper;
@@ -350,6 +542,12 @@ public class @FMP : IInputActionCollection, IDisposable
         public InputAction @ChangeScene => m_Wrapper.m_RLGL_ChangeScene;
         public InputAction @Select => m_Wrapper.m_RLGL_Select;
         public InputAction @Look => m_Wrapper.m_RLGL_Look;
+        public InputAction @LeftClick => m_Wrapper.m_RLGL_LeftClick;
+        public InputAction @MMB => m_Wrapper.m_RLGL_MMB;
+        public InputAction @RightClick => m_Wrapper.m_RLGL_RightClick;
+        public InputAction @ScrollWheel => m_Wrapper.m_RLGL_ScrollWheel;
+        public InputAction @Enter => m_Wrapper.m_RLGL_Enter;
+        public InputAction @Cancel => m_Wrapper.m_RLGL_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_RLGL; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -371,6 +569,24 @@ public class @FMP : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnLook;
+                @LeftClick.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnLeftClick;
+                @MMB.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnMMB;
+                @MMB.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnMMB;
+                @MMB.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnMMB;
+                @RightClick.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnRightClick;
+                @RightClick.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnRightClick;
+                @RightClick.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnRightClick;
+                @ScrollWheel.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnScrollWheel;
+                @ScrollWheel.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnScrollWheel;
+                @ScrollWheel.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnScrollWheel;
+                @Enter.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnEnter;
+                @Cancel.started -= m_Wrapper.m_RLGLActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_RLGLActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_RLGLActionsCallbackInterface.OnCancel;
             }
             m_Wrapper.m_RLGLActionsCallbackInterface = instance;
             if (instance != null)
@@ -387,6 +603,24 @@ public class @FMP : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
+                @MMB.started += instance.OnMMB;
+                @MMB.performed += instance.OnMMB;
+                @MMB.canceled += instance.OnMMB;
+                @RightClick.started += instance.OnRightClick;
+                @RightClick.performed += instance.OnRightClick;
+                @RightClick.canceled += instance.OnRightClick;
+                @ScrollWheel.started += instance.OnScrollWheel;
+                @ScrollWheel.performed += instance.OnScrollWheel;
+                @ScrollWheel.canceled += instance.OnScrollWheel;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
             }
         }
     }
@@ -442,5 +676,11 @@ public class @FMP : IInputActionCollection, IDisposable
         void OnChangeScene(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnLeftClick(InputAction.CallbackContext context);
+        void OnMMB(InputAction.CallbackContext context);
+        void OnRightClick(InputAction.CallbackContext context);
+        void OnScrollWheel(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

@@ -20,7 +20,7 @@ public class PointPickup : MonoBehaviour
 	{
 		if (other.CompareTag("Player"))
 		{
-            Destroy(this.gameObject);
+
 		}
 	}
 

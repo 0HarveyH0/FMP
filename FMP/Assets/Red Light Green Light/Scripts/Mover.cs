@@ -23,8 +23,10 @@ public class Mover : MonoBehaviour
     public static ReadOnlyArray<PlayerInput> all { get; }
     public playerPosition playerPos;
 	private FMP playerInputActions;
-	private PlayerInput input;
     Vector3 velocity;
+    float turnSmoothVelocity;
+    public float turnSmoothTime = 0.1f;
+    public Transform cam;
 
     private CharacterController controller;
 
@@ -50,8 +52,15 @@ public class Mover : MonoBehaviour
     }
 
 
+	public void Update()
+	{
 
-    public void SetInputVector(Vector2 direction)
+	}
+
+
+
+
+	public void SetInputVector(Vector2 direction)
     {
         inputVector = direction;
     }
@@ -97,7 +106,21 @@ public class Mover : MonoBehaviour
             controller.Move(velocity * Time.deltaTime);
             anim.SetFloat("Speed", moveDirection.x + moveDirection.z);
 
-            //Debug.Log(Id);
+
+            float horizontal = inputVector.x;
+            float vertical = inputVector.y;
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+            if (direction.magnitude >= 0.1f)
+            {
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                controller.Move(moveDir.normalized * MoveSpeed * Time.deltaTime);
+            }
+
         }
 		else
 		{
@@ -148,51 +171,29 @@ public class Mover : MonoBehaviour
 		}
 		else if (other.CompareTag("collectable"))
 		{
-            points++;
+            int randInt = Random.Range(-5, 7);
+            points = points + randInt;
             coinCounter.SetText(points.ToString());
-		}
-        else if (other.CompareTag("deductable"))
-        {
-            points--;
-            coinCounter.SetText(points.ToString());
+
+            GameObject coin = other.gameObject;
+
+            StartCoroutine(coinSpawn(coin));
+
         }
-        else if (other.CompareTag("BonusCoin"))
-        {
-            points = points + 3;
-            coinCounter.SetText(points.ToString());
-        }
-
-
-
     }
+
+    IEnumerator coinSpawn(GameObject gameObject)
+	{       
+        gameObject.SetActive(false);
+        int randomInt = Random.Range(5, 15);
+        yield return new WaitForSeconds(randomInt);
+        gameObject.SetActive(true);
+	}
+
+
 
     public bool isGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, .1f, groundMask);
     }
-
-    /*
-    public void Position(float playerIndex)
-    {
-        switch (position)
-        {
-            case 0:
-                Debug.Log($"{playerPos.playerPositionList[0]} is first");
-                position++;
-                break;
-            case 1:
-                Debug.Log($"{playerIndex + 1} is second");
-                position++;
-                break;
-            case 2:
-                Debug.Log($"{playerIndex + 1} is third");
-                position++;
-                break;
-            case 3:
-                Debug.Log($"{playerIndex + 1} is fourth");
-                position++;
-                break;
-        }
-    }
-    */
 }

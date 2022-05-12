@@ -4,58 +4,59 @@ using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
-    public Transform[] spawnLocation = new Transform[10];
-    public GameObject[] coins = new GameObject[3];
+    public Transform spawnLocation;
+    public GameObject coin;
     public int spawnCount;
     private int itemIndex = 0;
-
+    public bool CoinCollected = false;
+    public bool coinSpawned = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        itemIndex = Random.Range(0, coins.Length);
-        SpawnAllCollectables();
+
+    }
+
+	public void Awake()
+	{
     }
 
     // Update is called once per frame
     void Update()
     {
 
-    }
 
-    private void SpawnAllCollectables()
-    {
-        //iterates through the number of collectables in items array
-        for (int i = 0; i < coins.Length; i++)
+
+        if (coinSpawned)
         {
-            //spawns a unique collectable
-            SpawnCollectables();
+            if (CoinCollected)
+            {
+                coin.SetActive(false);
+            }
+            else
+            {
+
+            }
+        }
+		else
+		{
+            coin = Instantiate(coin, spawnLocation.position, spawnLocation.rotation);
+            coin.SetActive(true);
+            coinSpawned = true;
         }
     }
 
-    public void SpawnCollectables()
-    {
-        // first pick what random collectable you want to spawn
-        GameObject randomCollectable = coins[Random.Range(0, coins.Length)];
-        // next iterate all the spawn points, and spawn that item on each of them
-        foreach (Transform spawnPoint in spawnLocation)
-        {
-            Instantiate(randomCollectable, spawnPoint.position, spawnPoint.rotation);           
-        }
-    }
 
-    public GameObject GetCollectable()
-    {
-        int index = Random.Range(0, coins.Length);
-        return coins[index];
-    }
 
-    public Transform GetCollectableSpawnPoint()
-    {
-        //Selects one of the coins
-        itemIndex = itemIndex / coins.Length;
-        //returns the selected point
-        return spawnLocation[itemIndex];
-    }
+
+	public void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Player"))
+		{
+            CoinCollected = false;
+		}
+	}
+
+
 
 }

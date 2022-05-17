@@ -7,7 +7,6 @@ public class CoinSpawner : MonoBehaviour
     public Transform spawnLocation;
     public GameObject coin;
     public int spawnCount;
-    private int itemIndex = 0;
     public bool CoinCollected = false;
     public bool coinSpawned = false;
 
@@ -16,17 +15,13 @@ public class CoinSpawner : MonoBehaviour
     {
 
     }
-
 	public void Awake()
 	{
-    }
 
+    }
     // Update is called once per frame
     void Update()
     {
-
-
-
         if (coinSpawned)
         {
             if (CoinCollected)
@@ -45,10 +40,6 @@ public class CoinSpawner : MonoBehaviour
             coinSpawned = true;
         }
     }
-
-
-
-
 	public void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Player"))

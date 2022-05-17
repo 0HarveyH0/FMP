@@ -18,6 +18,7 @@ public class Mover : MonoBehaviour
     public LayerMask groundMask;
     public GameObject positionManager;
     public Transform respawn;
+    public winDetection winDetect;
     public uint Id { get; }
     public TextMeshProUGUI coinCounter;
     public static ReadOnlyArray<PlayerInput> all { get; }
@@ -44,7 +45,7 @@ public class Mover : MonoBehaviour
         anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         playerPos = positionManager.GetComponent<playerPosition>();
-
+        winDetect = GameObject.Find("PlayerManager").GetComponent<winDetection>();
         playerInputActions = new FMP();
         playerInputActions.RLGL.MoveForward.Enable();
         playerInputActions.RLGL.MoveForward.performed += MoveForward;
@@ -54,7 +55,10 @@ public class Mover : MonoBehaviour
 
 	public void Update()
 	{
-
+		if (winDetect.someoneWon)
+		{
+            anim.SetTrigger("Die");
+		}
 	}
 
 
@@ -147,11 +151,6 @@ public class Mover : MonoBehaviour
         canMove = false;
         //cant die
         anim.SetTrigger("Win");
-
-        int index = PlayerPrefs.GetInt("playerIndex");
-
-        Debug.Log(index);
-        PlayerPrefs.SetInt("playerIndex", index + 1);
     }
 
 
@@ -175,6 +174,15 @@ public class Mover : MonoBehaviour
             points = points + randInt;
             coinCounter.SetText(points.ToString());
 
+			if (hasWon())
+			{
+                if (!winDetect.someoneWon)
+                {
+                    winDetect.someoneWon = true;
+                    Win();
+                }
+			}
+
             GameObject coin = other.gameObject;
 
             StartCoroutine(coinSpawn(coin));
@@ -190,7 +198,10 @@ public class Mover : MonoBehaviour
         gameObject.SetActive(true);
 	}
 
-
+    public bool hasWon()
+	{
+        return points >= 10;
+	}
 
     public bool isGrounded()
     {

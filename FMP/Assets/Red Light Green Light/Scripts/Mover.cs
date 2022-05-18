@@ -49,20 +49,16 @@ public class Mover : MonoBehaviour
         playerInputActions = new FMP();
         playerInputActions.RLGL.MoveForward.Enable();
         playerInputActions.RLGL.MoveForward.performed += MoveForward;
-
     }
 
 
-	public void Update()
+    public void Update()
 	{
 		if (winDetect.someoneWon)
 		{
-            anim.SetTrigger("Die");
+            Die();
 		}
 	}
-
-
-
 
 	public void SetInputVector(Vector2 direction)
     {
@@ -71,10 +67,8 @@ public class Mover : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 inputVector = playerInputActions.RLGL.MoveForward.ReadValue<Vector2>();
-
-        
-        if (canMove == true)
+       
+        if (canMove)
         {
             
 			if (isGrounded())
@@ -90,11 +84,16 @@ public class Mover : MonoBehaviour
 			}
 
             moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
-            moveDirection = transform.TransformDirection(moveDirection);
+            //moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= MoveSpeed;
 
-            controller.Move(moveDirection * Time.deltaTime);
+            //controller.Move(moveDirection * Time.deltaTime);
+            float horizontal = inputVector.x;
+            float vertical = inputVector.y;
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
+            transform.rotation = Quaternion.LookRotation(direction);
+            controller.Move(moveDirection * Time.deltaTime);
             velocity.y += gravity * Time.deltaTime;
             anim.SetFloat("moveX", inputVector.x);
             anim.SetFloat("moveY", inputVector.y);
@@ -110,11 +109,13 @@ public class Mover : MonoBehaviour
             controller.Move(velocity * Time.deltaTime);
             anim.SetFloat("Speed", moveDirection.x + moveDirection.z);
 
+        
 
-            float horizontal = inputVector.x;
-            float vertical = inputVector.y;
-            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
+
+            //transform.Translate(direction * MoveSpeed * Time.deltaTime, Space.World);
+
+            /*
             if (direction.magnitude >= 0.1f)
             {
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -124,6 +125,7 @@ public class Mover : MonoBehaviour
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 controller.Move(moveDir.normalized * MoveSpeed * Time.deltaTime);
             }
+            */
 
         }
 		else
@@ -132,6 +134,7 @@ public class Mover : MonoBehaviour
 		}
         
     }
+
 
     public void MoveForward(InputAction.CallbackContext context)
 	{

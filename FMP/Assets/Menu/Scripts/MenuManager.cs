@@ -8,6 +8,8 @@ public class MenuManager : MonoBehaviour
     public GameObject cameraHandler;
     public GameObject mainMenu;
     public GameObject SelectMinigameMenu;
+    public GameObject LinksMenu;
+    public GameObject SettingsMenu;
 
     Animator cameraAnim;
 
@@ -16,6 +18,7 @@ public class MenuManager : MonoBehaviour
         cameraAnim = cameraHandler.GetComponent<Animator>();
         mainMenu.SetActive(true);
         SelectMinigameMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
     }
 
 
@@ -41,6 +44,8 @@ public class MenuManager : MonoBehaviour
 
     public void Back()
 	{
+        SelectMinigameMenu.SetActive(false);
+        LinksMenu.SetActive(false);
         mainMenu.SetActive(true);
         cameraAnim.SetTrigger("Idle");
     }
@@ -55,5 +60,31 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("SecondMinigame");
 
     }
+
+    public void Settings()
+	{
+        mainMenu.SetActive(false);
+        cameraAnim.SetTrigger("Idle");
+        SettingsMenu.SetActive(true);
+    }
+
+    public void Links()
+	{
+        StartCoroutine(LinksCo());
+    }
+
+    public void quit()
+	{
+        Application.Quit();
+	}
+
+    IEnumerator LinksCo()
+	{
+        mainMenu.SetActive(false);
+        cameraAnim.SetTrigger("Links");
+        yield return new WaitForSecondsRealtime(3);
+        LinksMenu.SetActive(true);
+    }
+
 
 }

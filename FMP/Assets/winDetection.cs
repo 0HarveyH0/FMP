@@ -15,13 +15,21 @@ public class winDetection : MonoBehaviour
         winText.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
         if (someoneWon)
         {
-            winText.SetActive(true);
-            SceneManager.LoadScene("PlayerConfigurator");
+            StartCoroutine(winEnum(5));
         }
     }
+
+    IEnumerator winEnum(int waitTime)
+	{
+        winText.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene("PlayerConfigurator");
+    }
+
+
 }

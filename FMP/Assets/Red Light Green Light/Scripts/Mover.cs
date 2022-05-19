@@ -160,8 +160,14 @@ public class Mover : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {      
         if (other.CompareTag("Finish"))
-        {
-            Win();        
+        {           
+                Debug.Log("haswon");
+                if (!winDetect.someoneWon)
+                {
+                    Debug.Log("!windetect.someoneWon");
+                    winDetect.someoneWon = true;
+                    Win();
+                }           
         }
         else if(other.CompareTag("Fall"))
         {

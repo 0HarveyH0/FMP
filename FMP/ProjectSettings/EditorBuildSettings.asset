@@ -5,27 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 3db1837cc97a95e4c98610966fac2b0b
-  - enabled: 0
-    path: Assets/Scenes/MainMenu.unity
-    guid: 9504a760a4476f147a0a13f2cbed6829
-  - enabled: 0
-    path: Assets/Scenes/MulitplayerTestScene.unity
-    guid: f9380f252a7a59f4c90f3bb17d9e7c9e
   - enabled: 1
     path: Assets/Scenes/PlayerConfigurator.unity
     guid: 327dfc561185827458c32b1a8c53a173
-  - enabled: 0
-    path: Assets/Scenes/TestScene.unity
-    guid: 08326e245765bee468c70a23556bf647
   - enabled: 1
     path: Assets/Scenes/RedLightGreenLight.unity
     guid: 62beb5da27c90a74f8c7376985c084dd
-  - enabled: 0
-    path: Assets/Scenes/mazeminigame.unity
-    guid: b8b4427ff8f4fa94486473f2c96724a3
   - enabled: 1
     path: Assets/Scenes/SecondMinigame.unity
     guid: bc620eb47c13ebc4c92a50e31165b6f7

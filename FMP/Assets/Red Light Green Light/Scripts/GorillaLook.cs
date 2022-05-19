@@ -14,7 +14,9 @@ public class GorillaLook : MonoBehaviour
 
     private Animator animator;
     
-    private Mover player;
+    private GameObject[] playerTag;
+    private GameObject player;
+    private Mover moverScript;
 
 	private void Awake()
 	{
@@ -24,15 +26,20 @@ public class GorillaLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<Mover>();
         jingleSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         currentInspectionTime = startInspectionTime;
+        
     }
 
     // Update is called once per frame
     void Update()
-    {       
+    {
+        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            moverScript = gameObject.GetComponent<Mover>();
+
+        }
         StateMachine();               
     }
     private void StateMachine()
@@ -66,9 +73,12 @@ public class GorillaLook : MonoBehaviour
 		{
             currentInspectionTime -= Time.deltaTime;
 
-			if (player.IsMoving())
+
+
+
+            if (moverScript.IsMoving())
 			{
-                player.Die();
+                moverScript.Die();
 			}
 		}
 		else
@@ -80,4 +90,11 @@ public class GorillaLook : MonoBehaviour
             currentState = RobotStates.Counting;
 		}
 	}
+
+
+    void GetPlayerScript()
+	{
+
+    }
+
 }

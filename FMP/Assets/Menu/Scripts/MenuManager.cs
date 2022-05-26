@@ -37,6 +37,7 @@ public class MenuManager : MonoBehaviour
 
     public void SelectMinigame()
 	{
+        cameraAnim.SetBool("Idle", false);
         mainMenu.SetActive(false);
         cameraAnim.SetTrigger("SelectMinigame");
         SelectMinigameMenu.SetActive(true);
@@ -44,10 +45,11 @@ public class MenuManager : MonoBehaviour
 
     public void Back()
 	{
+        SettingsMenu.SetActive(false);
         SelectMinigameMenu.SetActive(false);
         LinksMenu.SetActive(false);
         mainMenu.SetActive(true);
-        cameraAnim.SetTrigger("Idle");
+        cameraAnim.SetBool("Idle", true);
     }
 
     public void RLGL()
@@ -62,7 +64,8 @@ public class MenuManager : MonoBehaviour
     }
 
     public void Settings()
-	{
+    {
+        cameraAnim.SetBool("Idle", false);
         mainMenu.SetActive(false);
         cameraAnim.SetTrigger("Idle");
         SettingsMenu.SetActive(true);
@@ -80,6 +83,7 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator LinksCo()
 	{
+        cameraAnim.SetBool("Idle", false);
         mainMenu.SetActive(false);
         cameraAnim.SetTrigger("Links");
         yield return new WaitForSecondsRealtime(3);

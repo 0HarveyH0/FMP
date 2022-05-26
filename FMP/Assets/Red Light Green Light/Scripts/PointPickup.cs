@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PointPickup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+	public AudioSource coinCollect;
+	private void Awake()
+	{
+		coinCollect = GetComponent<AudioSource>();
+	}
+
+
+	// Start is called before the first frame update
+	void Start()
     {
         
     }
